@@ -7,4 +7,12 @@ data = requests.get(URL).text
 
 soup = BeautifulSoup(data, features="html.parser")
 
-print(soup.find_all("td"))
+movies = soup.find_all("td", {"class":"titleColumn"})
+
+for f in movies:
+  print(f.getText())
+
+movies = soup.find_all("td", {"class":"ratingColumn imdbRating"})
+
+for f in movies:
+  print(f.getText())
