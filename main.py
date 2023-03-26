@@ -1,7 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
+from pymongo import MongoClient
 
 URL = "https://www.imdb.com/chart/top/?ref_=nv_mv_250"
+
+MONGO_URL = "mongodb+srv://retyp:12345@cluster0.iztqtnu.mongodb.net/?retryWrites=true&w=majority"
 
 data = requests.get(URL).text
 
@@ -106,3 +109,17 @@ movies = soup.find_all("td", {"class":"ratingColumn imdbRating"})
 
 for f in movies[9:10]:
   print(f.getText())
+
+
+client = MongoClient(MONGO_URL)
+
+client = MongoClient(MONGO_URL)
+db = client["dima"]
+
+films = db["final"]
+
+films.insert_one({​​​​​​"film":"test"}​​​​​​)
+
+
+
+
